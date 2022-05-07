@@ -1,1 +1,12 @@
-STANDARD = 'u:user;;\ntask;due;created\n'
+STANDARD = '''{
+    "name" : "user",
+    "tasks" : [
+        <t>
+    ]
+}'''
+
+NEWTASK = '''{
+    "task" : "ntask",
+    "due" : "ndue",
+    "created" : "ncreated"
+}'''
