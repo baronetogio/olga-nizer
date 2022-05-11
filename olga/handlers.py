@@ -29,15 +29,27 @@ def user_verify():
         return tasklist, user
 
 def user_action(tasklist, user):
-    print('O que deseja fazer?\n\n1-Adicionar uma nova tarefa\n2-Salvar e sair')
+    print('O que deseja fazer?\n\n1-Adicionar uma nova tarefa\n2-Deletar tarefa\n3-Salvar e sair')
     dec = input()
     if dec == '1':
         handlers.create_task(tasklist)
         clear_console()
         handlers.draw_tasks(tasklist)
         user_action(tasklist, user)
-    else: 
+    elif dec == '2':
+        clear_console()
+        handlers.draw_tasks(tasklist)
+        taskid = input('Insira a task a ser removida: ')
+        handlers.delete_task(tasklist, int(taskid))
+        clear_console()
+        handlers.draw_tasks(tasklist)
+        user_action(tasklist, user)
+    elif dec == '3':
         handlers.save_tasks(tasklist, user)
+        print("Até logo!")
+    else: 
+        print('Insira uma ação válida')
+        user_action(tasklist, user)
 
 
 # MAIN APP RUN
